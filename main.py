@@ -33,7 +33,7 @@ async def send_welcome(message: types.Message):
     ]
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
 
-    await message.reply("Здравствуйте, Вас приветствует Telegram-bot информационного оператора ЭД2 «НТСсофт». Выберите необходимое Вам действие из меню.",reply_markup=keyboard)
+    await message.reply("Здравствуйте, Вас приветствует Telegram-bot информационного оператора ////////. Выберите необходимое Вам действие из меню.",reply_markup=keyboard)
 
 
 @dp.message_handler(text=['Настройка логинов'])
