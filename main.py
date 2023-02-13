@@ -10,7 +10,7 @@ from aiogram.utils.callback_data import CallbackData
 
 
 
-TOKEN = "6181852483:AAEeiabh3y6yvonbPYyfEQ4Qa3JzJj3E9t4"
+TOKEN = ""
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
 storage = MemoryStorage()
@@ -70,7 +70,7 @@ async def send_welcome(message: types.Message):
 @dp.callback_query_handler(lambda c: c.data and c.data.startswith("link"))
 async def process_callback_button_link(callback_query: CallbackQuery):
     # Открываем ссылку в телеграм-боте
-    await bot.answer_callback_query(callback_query.id, url="https://t.me/user_id=371411896")
+    await bot.answer_callback_query(callback_query.id, url="")
 
 
 @dp.message_handler(text="Обратится в тех. поддержку")
@@ -177,10 +177,10 @@ async def proc_name(message: types.Message, state: FSMContext):
             user_message3 = data['namesc']
             await bot.send_message(message.from_user.id, f'Логин - {data["text"]}\n' f'Пароль - {data["pas"]}\n' f'Название - {data["namesc"]}')
 
-            parm = {"Type": "BindLogin", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "Login": data["text"], "Password": data["pas"], "Description": data["namesc"], "TgId": message.from_user.id}
+            parm = {"Type": "BindLogin", "Token": "", "Login": data["text"], "Password": data["pas"], "Description": data["namesc"], "TgId": message.from_user.id}
             # await bot.send_message(message.from_user.id, parm)
             try:
-                response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm, verify=False, timeout=10)
+                response = requests.get('', params=parm, verify=False, timeout=10)
                 json_data = response.text
                 data_dict = json.loads(json_data)
                 if data_dict.get('Status') == 'Success':
@@ -211,9 +211,9 @@ async def proc_name(message: types.Message, state: FSMContext):
 
 @dp.message_handler(text=['Выбор логина'])
 async def send_welcome(message: types.Message):
-    parm = {"Type": "BindedList", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "TgId": message.from_user.id}
+    parm = {"Type": "BindedList", "Token": "", "TgId": message.from_user.id}
     try:
-        response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm, verify=False, timeout=10)
+        response = requests.get('', params=parm, verify=False, timeout=10)
         json_data = response.text
         data_dict = json.loads(json_data)
         if data_dict.get('Status') == 'Success':
@@ -272,10 +272,10 @@ async def func1(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         login = data["login"]
 
-        parm2 = {"Type": "GetBalance", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "Login": login,
+        parm2 = {"Type": "GetBalance", "Token": "", "Login": login,
                  "TgId": message.from_user.id}
         # try:
-        response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm2, verify=False,
+        response = requests.get('', params=parm2, verify=False,
                                 timeout=10)
         json_data = response.text
         data_dict = json.loads(json_data)
@@ -321,9 +321,9 @@ async def func1(message: types.Message, state: FSMContext):
 async def func1(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         login = data["login"]
-        parm2 = {"Type": "GetPaymentLink", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "Login": login, "TgId": message.from_user.id}
+        parm2 = {"Type": "GetPaymentLink", "Token": "", "Login": login, "TgId": message.from_user.id}
         try:
-            response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm2, verify=False,
+            response = requests.get('', params=parm2, verify=False,
                                     timeout=10)
             json_data = response.text
             data_dict = json.loads(json_data)
@@ -360,9 +360,9 @@ async def func1(message: types.Message, state: FSMContext):
 #     async with state.proxy() as data:
 #         login = data["login"]
 #         log_lim = message.text
-#         parm2 = {"Type": "SetLimit", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "TgId": message.from_user.id, "Login": login, "Limit": log_lim}
+#         parm2 = {"Type": "SetLimit", "Token": "", "TgId": message.from_user.id, "Login": login, "Limit": log_lim}
 #         try:
-#             response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm2, verify=False,
+#             response = requests.get('', params=parm2, verify=False,
 #                                     timeout=10)
 #             json_data = response.text
 #             data_dict = json.loads(json_data)
@@ -410,9 +410,9 @@ class login_save_del(StatesGroup):
 
 @dp.message_handler(text=['Отвязать логин'])
 async def send_welcome(message: types.Message):
-    parm = {"Type": "BindedList", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "TgId": message.from_user.id}
+    parm = {"Type": "BindedList", "Token": "", "TgId": message.from_user.id}
     try:
-        response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm, verify=False, timeout=10)
+        response = requests.get('', params=parm, verify=False, timeout=10)
         json_data = response.text
         data_dict = json.loads(json_data)
         if data_dict.get('Status') == 'Success':
@@ -459,10 +459,10 @@ async def func1(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         login = data["login"]
         # descrip = data["Description"]
-        parm3 = {"Type": "UnBindLogin", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "Login": login, "TgId": message.from_user.id}
+        parm3 = {"Type": "UnBindLogin", "Token": "", "Login": login, "TgId": message.from_user.id}
         # await bot.send_message(message.from_user.id, parm3)
         try:
-            response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm3, verify=False,
+            response = requests.get('', params=parm3, verify=False,
                                     timeout=10)
             json_data = response.text
             data_dict = json.loads(json_data)
@@ -515,9 +515,9 @@ class login_save_rename(StatesGroup):
 
 @dp.message_handler(text=['Изменить название'])
 async def cmd_dialog(message: types.Message):
-    parm = {"Type": "BindedList", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "TgId": message.from_user.id}
+    parm = {"Type": "BindedList", "Token": "", "TgId": message.from_user.id}
     try:
-        response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm, verify=False, timeout=10)
+        response = requests.get('', params=parm, verify=False, timeout=10)
         json_data = response.text
         data_dict = json.loads(json_data)
         if data_dict.get('Status') == 'Success':
@@ -582,11 +582,11 @@ async def func1(message: types.Message, state: FSMContext):
             login = data["login"]
         description = message.text
         # await message.answer(f"Новое название - {description}")
-        parm4 = {"Type": "SetLoginDescription", "Token": "10093e72-255c-4055-92dc-859b53572ff2", "TgId": message.from_user.id,
+        parm4 = {"Type": "SetLoginDescription", "Token": "", "TgId": message.from_user.id,
                  "Login": login, "Description": description}
         # await bot.send_message(message.from_user.id, parm4)
         try:
-            response = requests.get('https://dev-lk.ntssoft.ru/ajax/public/tgbot?', params=parm4, verify=False,
+            response = requests.get('', params=parm4, verify=False,
                                     timeout=10)
             json_data = response.text
             data_dict = json.loads(json_data)
