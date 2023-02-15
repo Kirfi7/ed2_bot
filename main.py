@@ -9,9 +9,9 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.utils.callback_data import CallbackData
 
 
-api_ssilka = 'https://dev-lk.ntssoft.ru/ajax/public/tgbot?'
-token_api = "10093e72-255c-4055-92dc-859b53572ff2"
-TOKEN = "6181852483:AAEeiabh3y6yvonbPYyfEQ4Qa3JzJj3E9t4"
+api_ssilka = ''
+token_api = ""
+TOKEN = ""
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
 storage = MemoryStorage()
