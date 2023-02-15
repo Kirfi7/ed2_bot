@@ -34,7 +34,7 @@ async def send_welcome(message: types.Message):
     ]
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
 
-    await message.reply("Здравствуйте, Вас приветствует Telegram-bot информационного оператора ЭД2 «НТСсофт». Выберите необходимое Вам действие из меню.",reply_markup=keyboard)
+    await message.reply("Здравствуйте, Вас приветствует Telegram-bot информационного оператора ........ Выберите необходимое Вам действие из меню.",reply_markup=keyboard)
 
 
 @dp.message_handler(text=['Настройка логинов'])
@@ -75,7 +75,7 @@ async def send_welcome(message: types.Message):
 @dp.message_handler(text="Обратиться в тех. поддержку")
 async def help_hand(message: types.Message):
     # создаем кнопку
-    button = InlineKeyboardButton(text='Перейти в чат в Telegram', url='https://t.me/Belotserkovskiy_Igor')
+    button = InlineKeyboardButton(text='Перейти в чат в Telegram', url='')
     # создаем разметку с кнопкой
     keyboard = InlineKeyboardMarkup().add(button)
     # отправляем сообщение с кнопкой
